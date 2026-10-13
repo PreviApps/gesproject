@@ -4,7 +4,7 @@ FROM node:22-alpine AS build
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
 COPY . .
 RUN npm run build
@@ -18,7 +18,8 @@ ENV NODE_ENV=production
 
 COPY package*.json ./
 # Instalamos solo dependencias de producción para mantener la imagen ligera
-RUN npm ci --only=production
+#RUN npm ci --only=production
+RUN npm install --omit=dev
 
 # Copiamos los archivos compilados desde la etapa de builder
 COPY --from=build /usr/src/app/dist ./dist
