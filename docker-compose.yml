@@ -1,29 +1,22 @@
-version: '3.8'
-
 services:
   backend:
-    build: ./backend
+    build: 
+      context: ./backend
     container_name: gesproject-backend
     restart: always
     ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=production
-      # Agrega aquí tus variables de entorno si usas bases de datos (ej. DB_HOST=postgres, etc.)
-    networks:
-      - gesproject-net
+      - "3014:3014"
+    env_file: 
+      - ./backend/.env
 
   frontend:
-    build: ./frontend
+    build: 
+      context: ./frontend
     container_name: gesproject-frontend
     restart: always
     ports:
-      - "80:80"
+      - "4014:80"
     depends_on:
       - backend
-    networks:
-      - gesproject-net
-
-networks:
-  gesproject-net:
-    driver: bridge
+    env_file:
+      - ./frontend/.env
