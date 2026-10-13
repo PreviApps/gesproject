@@ -21,7 +21,7 @@ COPY package*.json ./
 RUN npm ci --only=production
 
 # Copiamos los archivos compilados desde la etapa de builder
-COPY --from=builder /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/dist ./dist
 
 EXPOSE 3014
 

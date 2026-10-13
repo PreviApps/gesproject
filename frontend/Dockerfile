@@ -13,7 +13,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copiamos el build de vite al directorio que sirve nginx
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # (Opcional) Si necesitas customizar la config de nginx para rutas de SPA
 COPY nginx.conf /etc/nginx/conf.d/default.conf
