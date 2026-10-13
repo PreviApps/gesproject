@@ -1,7 +1,7 @@
 import type { Area } from '../types/project.types'; // O tu archivo de tipos general
 
 // Lee la URL base desde las variables de entorno de Vite
-const API_URL = import.meta.env.API_URL_BASE || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL;
 
 // Obtener todas las áreas
 export async function getAreas(): Promise<Area[]> {

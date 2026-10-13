@@ -1,6 +1,6 @@
 import type { Project, CreateProjectInput } from '../types/project.types';
 
-const API_URL = import.meta.env.API_URL_BASE || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL;
 
 function mapBackendProjectToFrontend(item: any): Project {
     return {
